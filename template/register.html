@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block register %}
+    <div class="section"></div>
+
+  <main style="padding-left: 0">
+    <center>
+        
+      <h5 class="indigo-text">Please login into your account</h5>
+      <div class="section"></div>
+      <div class="container">
+        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 12px 48px 0px 48px; border: 1px solid #EEE;">
+
+          <form class="col s12" method="POST">
+        {% csrf_token %}
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="first_name" name="first_name" type="text">
+                <label for="first_name" class="">First Name</label>
+              </div>
+            
+              <div class="input-field col s6">
+                <input id="last_name" name="last_name" type="text">
+                <label for="last_name" class="">Last Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email5" name="email" type="email" >
+                <label for="email">Email</label>
+              </div>
+            </div>
+             <div class="row">
+              <div class="input-field col s12">
+                <input id="text" name="username" type="text">
+                <label for="text">username</label>
+              </div>
+            </div>
+              <div class="row">
+              <div class="input-field col s6">
+                <input id="password" name="password1" type="password">
+                <label for="password" class="">Password</label>
+              </div>
+            
+              <div class="input-field col s6">
+                <input id="password2" name="password2" type="password">
+                <label for="password2" class="">Password</label>
+              </div>
+            </div>                 
+              <div class="row">
+                
+                  <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
+                    <i class="mdi-content-send right"></i>
+                  </button>
+                
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+        
+    </center>
+
+  </main>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block list%}
+{% load static %}
+
+{% if request.user.is_authenticated %}
+<main>
+<div class="container">
+<div class="row">
+
+		{% for data in datas %}
+		
+
+		<p>{{ data.slugname }}  ==> {{data.date}} {{data.likes}}</p>
+		
+
+	    {% endfor %}
+
+
+
+</div>
+</div>
+</main>
+
+{% elif not request.user.is_authenticated %}
+
+		
+
+{% endif %}
+
+{% endblock %}
