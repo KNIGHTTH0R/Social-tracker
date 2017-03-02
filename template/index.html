@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block index%}
+{% load static %}
+
+<div class="row centered" style="padding-bottom: 50px;">
+    {% if form %}
+    <div class="col col-2"> 
+        <fieldset>
+        <legend>Twitter</legend>
+        <p>{{countertw}}</p>
+        </fieldset>
+    </div>
+
+    <div class="col col-6">
+    
+    <form method="POST" class="form">{% csrf_token %}
+        <fieldset>
+        <legend>Social Counter </legend>
+        {{ form.as_p }}
+        <div class="row centered">
+        <div class="form-item">
+        <button type="submit" class="button">Show me!</button>
+        </div>
+        </div>
+         </fieldset>
+    </form>
+</div>
+    
+    <div class="col col-2"> 
+        <fieldset>
+        <legend>Instagram</legend>
+        <p>{{counterins}}</p>
+        </fieldset>
+    </div>
+
+    {% endif%}
+
+    {% if callback %}
+    <fieldset>
+        <legend>{{callback.0}}</legend>
+        <table class="bordered striped" style="font: caption;">
+        <thead>
+            <tr>
+                <th class="w60">Date</th>
+                <th class="w20">Follower</th>
+                <th class="w20">Increment</th>
+            </tr>
+        </thead>
+        <tbody> 
+        {% for call in callback reversed %}
+        <tr>
+          <th >{{call.date}}</th>  
+          <th >{{call.likes}}</th>  
+          <th >{{call.likesraiting}}</th>  
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table> 
+    </fieldset>   
+    
+
+
+</div>
+
+
+    {% endif %}
+{% if lastsource %}
+<div class="row ">
+
+    <div class="col col-3 offset-2">
+    <fieldset>
+    <legend>Recent searches</legend>
+        <table class="bordered striped" style="font: caption;">
+        <thead>
+            <tr>
+                <th>Account</th>
+            </tr>
+        </thead>
+        <tbody> 
+        {% for last in lastsource %}
+            <tr>
+            <th>                  
+            {{last.owner__url}}
+            </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table> 
+    </fieldset>
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock %}
