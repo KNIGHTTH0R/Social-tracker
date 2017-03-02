@@ -15,16 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from Account import views as profile_views
+from Account import views as profilev
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
 	url(r'^admin/', admin.site.urls),
-	url(r'^register/',profile_views.register),
-	url(r'^login/',profile_views.login),
-    url(r'^logout/',profile_views.logout),
-    url(r'^$',profile_views.accountadd),
-    url(r'^instagram/(?P<susername>[\w.@+-]+)',profile_views.accountadd),
-	url(r'^twitter/(?P<susername>[\w.@+-]+)',profile_views.accountadd)
+	url(r'^register/',profilev.register),
+	url(r'^login/',profilev.login),
+    url(r'^logout/',profilev.logout),
+    url(r'^$',profilev.accountadd),
+    url(r'^instagram/(?P<susername>[\w.@+-]+)',profilev.getuserinfo),
+	url(r'^twitter/(?P<susername>[\w.@+-]+)',profilev.getuserinfo)
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
